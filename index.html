@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local ChatBot</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <h2>⚙ Configuration</h2>
+
+        <label for="model">Model</label>
+        <select id="model">
+            <option>mistral</option>
+        </select>
+
+        <label for="temperature">Temperature</label>
+        <input
+            type="range"
+            id="temperature"
+            min="0"
+            max="1.5"
+            step="0.1"
+            value="0.7">
+
+        <span id="tempValue">0.7</span>
+
+        <label for="top_k">Top K</label>
+        <input
+            type="range"
+            id="top_k"
+            min="1"
+            max="100"
+            value="40">
+
+        <span id="topkValue">40</span>
+
+        <label for="top_p">Top P</label>
+        <input
+            type="range"
+            id="top_p"
+            min="0"
+            max="1"
+            step="0.1"
+            value="0.9">
+
+        <span id="toppValue">0.9</span>
+
+        <label for="num_predict">Max Tokens</label>
+        <input
+            type="number"
+            id="num_predict"
+            value="100"
+            min="1"
+            max="4096">
+
+    </div>
+
+    <!-- Main Panel -->
+    <div class="main">
+
+        <h1>ChatBot</h1>
+
+        <textarea
+            id="prompt"
+            placeholder="Enter your prompt..."></textarea>
+
+        <button id="generateBtn" onclick="generate()">
+            Generate
+        </button>
+
+        <div id="loader" class="loader"></div>
+
+        <pre id="responseBox">Response will appear here...</pre>
+
+        <div class="stats">
+
+            <div class="card">
+                <h3>Input Tokens</h3>
+                <p id="input">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Output Tokens</h3>
+                <p id="output">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Time</h3>
+                <p id="time">0 s</p>
+            </div>
+
+            <div class="card">
+                <h3>Cost</h3>
+                <p id="cost">$0.00</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Load JavaScript after the HTML -->
+<script src="/static/script.js"></script>
+
+</body>
+</html>
